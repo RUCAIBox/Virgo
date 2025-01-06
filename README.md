@@ -2,7 +2,7 @@
 <div align=center>
 <h1>Virgo: A Preliminary Exploration on Reproducing o1-like MLLM</h1>
 <a href="https://arxiv.org/abs/2501.01904" target="_blank"><img src=https://img.shields.io/badge/arXiv-b5212f.svg?logo=arxiv></a>
-<a href="https://huggingface.co/Richard1999/Virgo-72B"><img alt="Static Badge" src="https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-blue?color=8A2BE2"></a>
+<a href="https://huggingface.co/RUC-AIBOX/Virgo-72B"><img alt="Static Badge" src="https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-blue?color=8A2BE2"></a>
 <a><img src="https://img.shields.io/github/stars/RUCAIBox/Virgo"></a>
 </div>
 
