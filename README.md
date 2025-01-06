@@ -1,9 +1,9 @@
 
 <div align=center>
 <h1>Virgo: A Preliminary Exploration on Reproducing o1-like MLLM</h1>
-<a href="https://arxiv.org/abs/2412.09413" target="_blank"><img src=https://img.shields.io/badge/arXiv-b5212f.svg?logo=arxiv></a>
-<a href="https://huggingface.co/datasets/RUC-AIBOX/long_form_thought_data_5k"><img alt="Static Badge" src="https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-blue?color=8A2BE2"></a>
-<a><img src="https://img.shields.io/github/stars/RUCAIBox/Slow_Thinking_with_LLMs"></a>
+<a href="https://arxiv.org/abs/2501.01904" target="_blank"><img src=https://img.shields.io/badge/arXiv-b5212f.svg?logo=arxiv></a>
+<a href="https://huggingface.co/Richard1999/Virgo-72B"><img alt="Static Badge" src="https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-blue?color=8A2BE2"></a>
+<a><img src="https://img.shields.io/github/stars/RUCAIBox/Virgo"></a>
 </div>
 
 
@@ -94,6 +94,7 @@ Please kindly cite our reports if they are helpful for your research.
 @article{du2025virgo,
       title={Virgo: A Preliminary Exploration on Reproducing o1-like MLLM}, 
       author={Yifan Du and Zikang Liu and Yifan Li and Wayne Xin Zhao and Yuqi Huo and Bingning Wang and Weipeng Chen and Zheng Liu and Zhongyuan Wang and Ji-Rong Wen},
+      journal={arXiv preprint arXiv:2501.01904},
       year={2025}
 }
 ```
