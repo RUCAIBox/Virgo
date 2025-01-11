@@ -1,0 +1,1 @@
+FORCE_TORCHRUN=1 NNODES=$WORLD_SIZE NODE_RANK=$RANK MASTER_ADDR=$MASTER_ADDR MASTER_PORT=$MASTER_PORT llamafactory-cli train examples/train_full/qwen2vl-7b_full_sft_numina_sample_5k_10epoch.yaml

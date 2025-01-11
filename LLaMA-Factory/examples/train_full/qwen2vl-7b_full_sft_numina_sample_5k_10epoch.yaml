@@ -1,0 +1,41 @@
+### model
+model_name_or_path: Qwen/Qwen2-VL-7B-Instruct
+
+### method
+stage: sft
+do_train: true
+finetuning_type: full
+freeze_vision_tower: true  # choices: [true, false]
+train_mm_proj_only: false  # choices: [true, false]
+deepspeed: examples/deepspeed/ds_z3_config.json  # choices: [ds_z0_config.json, ds_z2_config.json, ds_z3_config.json]
+
+### dataset
+dataset: numina_llava_special_prompt_5k
+template: qwen2_vl
+cutoff_len: 32768
+max_samples: 10000
+overwrite_cache: true
+preprocessing_num_workers: 16
+
+### output
+output_dir: /checkpoint_save/llama_factory/qwen2_vl-7b-numina-sample-5K-10epoch/full/sft
+logging_steps: 10
+save_steps: 50
+plot_loss: true
+overwrite_output_dir: true
+
+### train
+per_device_train_batch_size: 2
+gradient_accumulation_steps: 4
+learning_rate: 7.0e-6
+num_train_epochs: 10
+lr_scheduler_type: cosine
+warmup_ratio: 0.1
+bf16: true
+ddp_timeout: 180000000
+
+### eval
+val_size: 0.001
+per_device_eval_batch_size: 1
+eval_strategy: steps
+eval_steps: 100

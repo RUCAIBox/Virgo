@@ -61,8 +61,25 @@ print(outputs[0].outputs[0].text)
 
 ```
 
+## Installation
+```bash
+python -m venv llama-factory
+source llama-factory/bin/activate
+pip uninstall -y accelerate vllm matplotlib
+cd LLaMA-Factory
+pip install -r requirement.txt
+```
+You can also follow https://github.com/hiyouga/LLaMA-Factory to prepare the environment.
+
 ## Training
 We use [LLaMA-Factory](https://github.com/hiyouga/LLaMA-Factory) to fine-tune Qwen2-VL-72B-Instruct.
+
+```
+cd LLaMA-Factory
+bash training_scripts/qwen2vl_72b_numina5K_10epoch.sh
+```
+
+We train Qwen2-VL-72B-Instruct with 64 Nvidia A800 with 80GB.
 
 ### An Example of Our Textual Long Thought Data
 <img src="figures/long_term_thought_example.png" alt="report_1" style="zoom:50%;" />
@@ -73,6 +90,55 @@ We use [LLaMA-Factory](https://github.com/hiyouga/LLaMA-Factory) to fine-tune Qw
 
 ## Evaluation
 - Our evaluation code is built upon [vllm_infer.py](https://github.com/hiyouga/LLaMA-Factory/blob/main/scripts/vllm_infer.py) in [LLaMA-Factory](https://github.com/hiyouga/LLaMA-Factory).
+
+### MathVision
+```bash
+# inference
+mdkir -p eval_results/MathVision/Virgo-72B
+python scripts/vllm_infer.py --model_name_or_path RUC-AIBOX/Virgo-72B --template qwen2_vl --cutoff_len 32768 --save_name eval_results/MathVision/Virgo-72B/MathVision_thought_Virgo-72B.jsonl --temperature 0 --max_new_tokens 8192 --dataset MathVision_thought --repetition_penalty 1.05
+# evaluation
+
+```
+
+### MathVerse
+```bash
+# inference
+mdkir -p eval_results/MathVerse/Virgo-72B
+python scripts/vllm_infer.py --model_name_or_path RUC-AIBOX/Virgo-72B --template qwen2_vl --cutoff_len 32768 --save_name eval_results/MathVerse/Virgo-72B/MathVerse_thought_Virgo-72B.jsonl --temperature 0 --max_new_tokens 8192 --dataset MathVerse_thought --repetition_penalty 1.05
+# exract answer
+python ../evaluation/MathVerse/evaluation/extract_answer_s1_mp.py \
+--model_output_file eval_results/MathVerse/Virgo-72B/MathVerse_thought_Virgo-72B.jsonl \
+--save_file eval_results/MathVerse/Virgo-72B/MathVerse_thought_Virgo-72B_extraction.jsonl \
+--cache \
+--trunk_response 30 \
+--save_every 10 \
+--api_key YOUR_API_KEY
+# evaluation
+python MathVerse/evaluation/score_answer_s2_mp.py \
+--answer_extraction_file eval_results/MathVerse/Virgo-72B/MathVerse_thought_Virgo-72B_extraction.jsonl \
+--save_file eval_results/MathVerse/Virgo-72B/MathVerse_thought_Virgo-72B_extraction_processed.jsonl \
+--cache \
+--trunk_response 30 \
+--save_every 500 \
+--api_key YOUR_API_KEY
+```
+
+### OlympiadBench
+```bash
+# inference
+mdkir -p eval_results/OlympiadBench/Virgo-72B
+python scripts/vllm_infer.py --model_name_or_path RUC-AIBOX/Virgo-72B --template qwen2_vl --cutoff_len 32768 --save_name eval_results/OlympiadBench/Virgo-72B/Olympiad_mm_thought_Virgo-72B.jsonl --temperature 0 --max_new_tokens 8192 --dataset olympiadbench_thought_mm --repetition_penalty 1.05
+python scripts/vllm_infer.py --model_name_or_path RUC-AIBOX/Virgo-72B --template qwen2_vl --cutoff_len 32768 --save_name eval_results/OlympiadBench/Virgo-72B/Olympiad_text_thought_Virgo-72B.jsonl --temperature 0 --max_new_tokens 8192 --dataset olympiadbench_thought_text --repetition_penalty 1.05
+# evaluation
+```
+
+### MMMU
+```bash
+# inference
+mdkir -p eval_results/MMMU/Virgo-72B
+python scripts/vllm_infer.py --model_name_or_path RUC-AIBOX/Virgo-72B --template qwen2_vl --cutoff_len 32768 --save_name eval_results/MMMU/Virgo-72B/MMMU_thought_Virgo-72B.jsonl --temperature 0 --max_new_tokens 8192 --dataset MMMU_thought --repetition_penalty 1.05
+# evaluation
+```
 
 - Please refer to [dataset_info.json](https://github.com/hiyouga/LLaMA-Factory/blob/main/data/dataset_info.json) to add a new dataset for evaluation.
 ## Main Results
@@ -85,6 +151,11 @@ We use [LLaMA-Factory](https://github.com/hiyouga/LLaMA-Factory) to fine-tune Qw
 Despite the promising results, our exploration remains preliminary, and there is still a substantial capacity gap compared to industry-level systems. As future work, we plan to investigate how to scale our training approach and extend its capacity to more complex tasks. 
 
 As always, we are committed to keeping our technical approach *open*, and we will release the data, model, and other resources. We welcome collaboration and support in computational resources.
+
+## Acknowledgement
+[LLaMA-Factory](https://github.com/hiyouga/LLaMA-Factory): the codebase we built on. Thanks for their awesome work!
+
+[VLMEvalkit](https://github.com/open-compass/VLMEvalKit): some evaluation results are conducted based on VLMEvalkit.
 
 ## Reference
 
