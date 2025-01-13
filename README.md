@@ -97,6 +97,13 @@ We train Qwen2-VL-72B-Instruct with 64 Nvidia A800 with 80GB.
 mdkir -p eval_results/MathVision/Virgo-72B
 python scripts/vllm_infer.py --model_name_or_path RUC-AIBOX/Virgo-72B --template qwen2_vl --cutoff_len 32768 --save_name eval_results/MathVision/Virgo-72B/MathVision_thought_Virgo-72B.jsonl --temperature 0 --max_new_tokens 8192 --dataset MathVision_thought --repetition_penalty 1.05
 # evaluation
+python MathVision/evaluation/score_answer_s2_mp.py \
+--answer_extraction_file eval_results/MathVerse/Virgo-72B/MathVision_thought_Virgo-72B_extraction.jsonl \
+--save_file eval_results/MathVerse/Virgo-72B/MathVision_thought_Virgo-72B_extraction_processed.jsonl \
+--cache \
+--trunk_response 30 \
+--save_every 500 \
+--api_key YOUR_API_KEY
 
 ```
 
@@ -130,6 +137,9 @@ mdkir -p eval_results/OlympiadBench/Virgo-72B
 python scripts/vllm_infer.py --model_name_or_path RUC-AIBOX/Virgo-72B --template qwen2_vl --cutoff_len 32768 --save_name eval_results/OlympiadBench/Virgo-72B/Olympiad_mm_thought_Virgo-72B.jsonl --temperature 0 --max_new_tokens 8192 --dataset olympiadbench_thought_mm --repetition_penalty 1.05
 python scripts/vllm_infer.py --model_name_or_path RUC-AIBOX/Virgo-72B --template qwen2_vl --cutoff_len 32768 --save_name eval_results/OlympiadBench/Virgo-72B/Olympiad_text_thought_Virgo-72B.jsonl --temperature 0 --max_new_tokens 8192 --dataset olympiadbench_thought_text --repetition_penalty 1.05
 # evaluation
+python OlympiadBench/evaluation/score_answer.py \
+--answer_file_mm eval_results/OlympiadBench/Virgo-72B/Olympiad_mm_thought_Virgo-72B.jsonl \
+--answer_file_text eval_results/OlympiadBench/Virgo-72B/Olympiad_text_thought_Virgo-72B.jsonl
 ```
 
 ### MMMU
