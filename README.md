@@ -18,6 +18,7 @@ This project is built upon our previous work on slow-thinking with LLM:
 
 
 ## News
++ [26 Feb 2025] We release the visual long-thought data in [RUC-AIBOX/Virgo-SFT-VL-Dataset](https://huggingface.co/datasets/RUC-AIBOX/Virgo-SFT-VL-Dataset). Welcome to use our dataset!
 
 + [6 Jan 2025] 🎉🎉🎉 We preliminarily reproduce **a o1-like MLLM**, achieving competitive performance compared to industry-level reasoning systems on these benchmarks! And we also release the [technical report](https://arxiv.org/pdf/2412.09413), which presents the details about our reproduction.
 
@@ -86,7 +87,7 @@ We train Qwen2-VL-72B-Instruct with 64 Nvidia A800 with 80GB.
 
 - Please refer to [dataset_info.json](https://github.com/hiyouga/LLaMA-Factory/blob/main/data/dataset_info.json) to add a new dataset for training.
 
-- We will release the distilled visual long thought data soon.
+- We will release the distilled visual long-thought data soon.
 
 ## Evaluation
 - Our evaluation code is built upon [vllm_infer.py](https://github.com/hiyouga/LLaMA-Factory/blob/main/scripts/vllm_infer.py) in [LLaMA-Factory](https://github.com/hiyouga/LLaMA-Factory).
