@@ -18,7 +18,7 @@ This project is built upon our previous work on slow-thinking with LLM:
 
 
 ## News
-+ [26 Feb 2025] We release the visual long-thought data in [RUC-AIBOX/Virgo-SFT-VL-Dataset](https://huggingface.co/datasets/RUC-AIBOX/Virgo-Visual-Long-Thought-Dataset). Welcome to use our dataset!
++ [26 Feb 2025] We release the visual long-thought data in [RUC-AIBOX/Virgo-Visual-Long-Thought-Dataset](https://huggingface.co/datasets/RUC-AIBOX/Virgo-Visual-Long-Thought-Dataset). Welcome to use our dataset!
 
 + [6 Jan 2025] 🎉🎉🎉 We preliminarily reproduce **a o1-like MLLM**, achieving competitive performance compared to industry-level reasoning systems on these benchmarks! And we also release the [technical report](https://arxiv.org/pdf/2412.09413), which presents the details about our reproduction.
 
